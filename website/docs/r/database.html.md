@@ -19,18 +19,16 @@ resource "influxdb_database" "metrics" {
 
 resource "influxdb_database" "metrics_aggregation" {
   name = "testdb11"
-  retention_policies = [
-    {
-      name = "52weeks",
-      duration = "52w"
-      default = "true"
-    },
-    {
-      name = "104weeks",
-      duration = "104w"
-      shardgroupduration = "3d"
-    },
-  ]
+  retention_policies {
+    name = "52weeks"
+    duration = "52w"
+    default = "true"
+  }
+  retention_policies {
+    name = "104weeks",
+    duration = "104w"
+    shardgroupduration = "3d"
+  }
 }
 ```
 
